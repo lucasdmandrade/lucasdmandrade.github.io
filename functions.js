@@ -23,4 +23,5 @@ buttonCalcular.onclick = function principal(){
         }
     }
 
+    console.log(verifica_1, " ", verifica_2)
 }
