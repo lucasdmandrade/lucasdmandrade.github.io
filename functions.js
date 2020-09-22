@@ -4,6 +4,7 @@ let buttonCalcular = document.querySelector("#btnC") // botão "Calcular" como v
 buttonCalcular.onclick = function principal(){
     let nomeVariavel = document.querySelector("#nomeVar").value
     let listaDados = document.querySelector("#textoDados").value.split(" ") // valores das variaveis tranformados em lista
+    let listaQnt = []
     let verifica_1 // recebe o valor dos radios 1
     let verifica_2 // recebe o valor dos radios 2
 
@@ -23,7 +24,19 @@ buttonCalcular.onclick = function principal(){
         }
     }
 
+    //conta os elementos iguais no vetor e exclui os repetidos
+    for (var i = 0; i < listaDados.length; i++){
+        listaQnt[i] = 1
+        for (var j = i + 1; j < listaDados.length; j++){
+            if (listaDados[i] == listaDados[j]){
+                listaQnt[i] = listaQnt[i] + 1
+                listaDados.splice(j, 1)
+                listaQnt.splice(j, 1)
+            }
+        }
+    }
+
     console.log(verifica_1, " ", verifica_2)
     console.log(listaDados)
-    
+    console.log(listaQnt)
 }
