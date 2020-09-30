@@ -12,7 +12,7 @@ buttonCalcular.onclick = function principal(){
     var Tipo1 = document.getElementsByName("tipoVariavel"); // Qualitativa ou quantitativa
     for (var i = 0; i < Tipo1.length; i++) {
         if (Tipo1[i].checked) {
-            Tipo1 = Tipo1[i].value
+            tipo1 = Tipo1[i].value
         }
     }
 
@@ -20,7 +20,7 @@ buttonCalcular.onclick = function principal(){
     var Tipo2 = document.getElementsByName("tipoVariavel2"); // Amostra ou população
     for (var i = 0; i < Tipo2.length; i++) {
         if (Tipo2[i].checked) {
-            Tipo2 = Tipo2[i].value
+            tipo2 = Tipo2[i].value
         }
     }
 
@@ -42,51 +42,58 @@ buttonCalcular.onclick = function principal(){
     console.log(dados)
     console.log(listaQnt)
 
-    // MEDIA
-
-    if (tipo1 !== "Nominal", "Ordinal"){
-     let media = (dados[i] + [i])/listaQnt[j]
-     document.write(getElementById("media"))
-    console.log(media).innerHTML(media)  
+    //se for tipo quantitativa precisa colocar em ordenar os dados
+    if(tipo1 == "continua", "discreta"){
+        let trocas 
+        do {
+            trocas = 0
+    
+            // Percurso do vetor do início até a PENÚLTIMA (length - 2)
+            for(let i = 0; i <= dados.length - 2; i++) {
+                if(dados[i] > dados[i + 1]) {
+                    // Fazer a troca entre os elementos usando DESESTRUTURAÇÃO (destructuring)
+                    [dados[i], dados[i + 1]] = [dados[i + 1], dados[i]]
+                    trocas++
+                    [listaQnt[i], listaQnt[i + 1]] = [listaQnt[i + 1], listaQnt[i]]
+                }
+            }
+        } while(trocas > 0)
     }
+    console.log(dados)
 
  // TABELA 
 
-    function criarTag(elemento){   
-        return document.createElement(elemento)
+    let tabela = document.getElementById("tabela")
 
-    let tabela = getElementById("tabela");
-    let thead = criarTag("thead");
-    let tbody = criarTag("tbody");
+    let tabela_str = [
+        '<table>',
+  '<thead>',
+  '<tr>']
 
-    let indiceTabela = ["Dados","Frequencia Absoluta","Frequencia Relativa", "Percentual Relativo"];
-    let linhaHead = criarTag("tr")
+    tabela_str.push(['<th>' + nome + '</th>',
+  '<th>Quantidade</th>',
+  '<th>frequencia simples</th>',
+  '<th>freuqencia em porcentagem</th>',
+  '<th>acumulo</th>',
+  '<th>acumulo em porcentagem</th>'
+])
 
-    function coluna(tag, text){
+  tabela_str.push(['</tr>',
+  '</thead>',
+  '<tbody>'])
 
-        tag = criarTag(tag);
-        tag.textContent = text;
-        return tag;
+  for(var i = 0; i < dados.length; i++){
+    tabela_str.push(['<tr>',
+    '<td>' + dados[i] + '</td>',
+    '<td>' + listaQnt[i] + '</td>',
+    '</tr>'
+])
+  }
+  
+  tabela_str.push([
+  '</tbody>',
+  '</table>'
+    ])
+
+    tabela.innerHTML = tabela_str.join("\n");
     }
-
-    for (let j= 0; j < indiceTabela.length; j++){
-        let th = coluna("th", indiceTabela[j]);
-        linhaHead.appendChild(th);
-    }  
-    thead.appendChild(linhaHead);
-
-    for (let j = 0; j < linhas.length; j++){
-        //console.log(lista[j])
-        let linhaBody = criarTag("tr");
-        for (let i = 0; i < linhas[j].length; i++){
-            console.log(linhas[j][i]);
-
-        }
-    tbody.appendChild(linhaBody);
-    }
-
-    tabela.appendChild(thead);
-    tabela.appendChild(tbody);
-
-  }}
-
