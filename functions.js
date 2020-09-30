@@ -65,20 +65,24 @@ buttonCalcular.onclick = function principal(){
 
     //se for quantitativa ordinal precisa juntar em "intervalos"
     if(tipo1 == "continua"){
-        for(var i = 0; i < dados.length; i++){
-            for(var j = i + 1; j <= dados.length; j++){
-                for(var i_intervalo = 0; i_intervalo < intervalo; i_intervalo++){
-                    if(parseFloat(dados[i]) + parseFloat(i_intervalo) == parseFloat(dados[j])){
-                        listaQnt[i] = listaQnt[i] + 1
-                        listaQnt.splice(j, 1)
-                        dados.splice(j, 1)
-                        j = j - 1
-                    }
+        let cont = 0
+        let cont2 
+        do{
+            cont2 = 0
+            cont++
+            for(var i = cont; i <= dados.length; i++){
+                if(parseFloat(dados[i]) <  intervalo * cont + parseFloat(dados[0])  ){
+                    listaQnt[i - 1] = listaQnt[i - 1] + 1
+                    dados.splice(i, 1)
+                    listaQnt.splice(i, 1)
+                    i = i - 1
+                    cont2++
                 }
             }
-        }
+            
+            console.log(cont, cont2, i)
+        }while(cont2 > 0)
     }
-
  // TABELA 
 
     let tabela = document.getElementById("tabela")
@@ -115,3 +119,4 @@ buttonCalcular.onclick = function principal(){
 
     tabela.innerHTML = tabela_str.join("\n");
     }
+
