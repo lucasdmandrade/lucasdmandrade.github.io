@@ -7,35 +7,85 @@
 <body>
     <h1>Estátistica Descritiva</h1>
 
+<!--Dados da Variável-->
+
     <h2>Dados</h2>
-    <label for="nomeV">Nome da variável:</label>
-    <input type="text" id="nomeVar" name="nomeV">
+    <label for="nome">Nome da variável:</label>
+    <input type="text" id="nome" name="nome">
     <br><br>
     <label for="dados">Digite os dados:</label>
-    <input type="text" id="textoDados" name="dados">
+    <input type="text" id="dados" name="dados">
+
+  <!--Tipo de Variável-->  
 
     <h2>Tipo de variavel</h2>
-    <input type="radio" id="nominal" name="tipoVariavel" value="nominal">
+    <input type="radio" id="nominal" name="tipo1" value="nominal">
     <label for="nominal">Variavel Qualitativa Nominal</label>
     <br>
-    <input type="radio" id="ordinal" name="tipoVariavel" value="ordinal">
+    <input type="radio" id="ordinal" name="tipo1" value="ordinal">
     <label for="ordinal">Variavel Qualitativa Ordinal</label>
     <br>
-    <input type="radio" id="discreta" name="tipoVariavel" value="discreta">
+    <input type="radio" id="discreta" name="tipo1" value="discreta">
     <label for="discreta">Variavel Quantitativa Discreta</label>
     <br>
-    <input type="radio" id="continua" name="tipoVariavel" value="continua">
+    <input type="radio" id="continua" name="tipo1" value="continua">
     <label for="continua">Variavel Quantitatia Continua</label>
     <br><br>
 
-    <input type="radio" id="amostra" name="tipoVariavel2" value="amostra">
+<!--Amostra ou População-->
+
+    <input type="radio" id="amostra" name="tipo2" value="amostra">
     <label for="amostra">Amostra</label>
-    <input type="radio" id="populacao" name="tipoVariavel2" value="populacao">
+    <input type="radio" id="populacao" name="tipo2" value="populacao">
     <label for="populacao">População</label>
 
-    <button id="btnC">Calcular</button>
+<!--Media-->
+<p>
+<output id="media">Média</output> 
+</p>
 
-     <div id="tabela"></div>
+<p>
+<button id="btnC">Calcular</button>
+</p>
+
+        <section>
+
+        <h1>TABELA</h1>
+        <table id="tabela"></table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+            </thead>
+            <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>    
+            </tbody>
+            <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>    
+            </tbody>
+            <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>    
+            </tbody>
+
+        </section>
+
     
     <script src="functions.js"></script>
 </body>

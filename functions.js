@@ -2,66 +2,89 @@ let buttonCalcular = document.querySelector("#btnC") // botão "Calcular" como v
 
 
 buttonCalcular.onclick = function principal(){
-    let nomeVariavel = document.querySelector("#nomeVar").value
-    let listaDados = document.querySelector("#textoDados").value.split(" ") // valores das variaveis tranformados em lista
+    let nome = document.querySelector("#nome").value
+    let dados = document.querySelector("#dados").value.split(" ") // valores das variaveis tranformados em lista
     let listaQnt = []
-    let verifica_1 // recebe o valor dos radios 1
-    let verifica_2 // recebe o valor dos radios 2
+    let tipo1 // recebe o valor dos radios 1
+    let tipo2 // recebe o valor dos radios 2
 
     // verifica qual radio da variavel 1 foi selecionado
-    var radios_1 = document.getElementsByName("tipoVariavel");
-    for (var i = 0; i < radios_1.length; i++) {
-        if (radios_1[i].checked) {
-            verifica_1 = radios_1[i].value
+    var tipo1 = document.getElementsByName("tipoVariavel"); // Qualitativa ou quantitativa
+    for (var i = 0; i < tipo1.length; i++) {
+        if (tipo1[i].checked) {
+            tipo1 = tipo1[i].value
         }
     }
 
     // verifica qual radio da variavel 2 foi selecionado
-    var radios_2 = document.getElementsByName("tipoVariavel2");
-    for (var i = 0; i < radios_2.length; i++) {
-        if (radios_2[i].checked) {
-            verifica_2 = radios_2[i].value
+    var tipo2 = document.getElementsByName("tipoVariavel2"); // Amostra ou população
+    for (var i = 0; i < tipo2.length; i++) {
+        if (tipo2[i].checked) {
+            tipo2 = tipo2[i].value
         }
     }
 
     //conta os elementos iguais no vetor e exclui os repetidos
-    for (var i = 0; i < listaDados.length; i++){
+    for (var i = 0; i < dados.length; i++){
         listaQnt[i] = 1
-        for (var j = i + 1; j < listaDados.length; j++){
-            if (listaDados[i] == listaDados[j]){
+        for (var j = i + 1; j < dados.length; j++){
+            if (dados[i] == dados[j]){
                 listaQnt[i] = listaQnt[i] + 1
-                listaDados.splice(j, 1)
-                listaQnt.splice(j, 1)
+                dados.splice(j, 1)
+                dados.splice(j, 1)
             }
         }
     }
 
-    console.log(verifica_1, " ", verifica_2)
-    console.log(listaDados)
+    console.log(tipo1, " ", tipo2)
+    console.log(dados)
     console.log(listaQnt)
 
- // TABELA 
-    function criarTabela(conteudo) {
+    // MEDIA
 
-  var tabela = document.createElement("table");
-  var thead = document.createElement("thead");
-  var tbody=document.createElement("tbody");
-  var thd=function(i){return (i==0)?"th":"td";};
-
-  for (var i=0;i<conteudo.length;i++) {
-    var tr = document.createElement("tr");
-    for(var o=0;o<conteudo[i].length;o++){
-
-      var t = document.createElement(thd(i));
-      var texto=document.createTextNode(conteudo[i][o]);
-      t.appendChild(texto);
-      tr.appendChild(t);
+    if (tipo1 !== "Nominal", "Ordinal"){
+     let media = (dados[i] + [i])/listaQnt[j]
+     document.write(getElementById("media"))
+    console.log(media).innerHTML(media)  
     }
-    (i==0)?thead.appendChild(tr):tbody.appendChild(tr);
-  }
-  tabela.appendChild(thead);
-  tabela.appendChild(tbody);
-  return tabela;
 
-}}
+ // TABELA 
+
+    function criarTag(elemento){   
+        return document.createElement(elemento)
+
+    let tabela = getElementById("tabela");
+    let thead = criarTag("thead");
+    let tbody = criarTag("tbody");
+
+    let indiceTabela = ["Dados","Frequencia Absoluta","Frequencia Relativa", "Percentual Relativo"];
+    let linhaHead = criarTag("tr")
+
+    function coluna(tag, text){
+
+        tag = criarTag(tag);
+        tag.textContent = text;
+        return tag;
+    }
+
+    for (let j= 0; j < indiceTabela.length; j++){
+        let th = coluna("th", indiceTabela[j]);
+        linhaHead.appendChild(th);
+    }  
+    thead.appendChild(linhaHead);
+
+    for (let j = 0; j < linhas.length; j++){
+        //console.log(lista[j])
+        let linhaBody = criarTag("tr");
+        for (let i = 0; i < linhas[j].length; i++){
+            console.log(linhas[j][i]);
+
+        }
+    tbody.appendChild(linhaBody);
+    }
+
+    tabela.appendChild(thead);
+    tabela.appendChild(tbody);
+
+  }}
 
