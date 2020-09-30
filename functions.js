@@ -29,11 +29,12 @@ buttonCalcular.onclick = function principal(){
         listaQnt[i] = 1
     }
     for (var i = 0; i < dados.length; i++){
-        for (var j = i + 1; j < dados.length; j++){
+        for (var j = i + 1; j <= dados.length; j++){
             if (dados[i] == dados[j]){
                 listaQnt[i] += 1
                 dados.splice(j, 1)
                 listaQnt.splice(j, 1)
+                j = j - 1
             }
         }
     }
@@ -97,3 +98,4 @@ buttonCalcular.onclick = function principal(){
 
     tabela.innerHTML = tabela_str.join("\n");
     }
+
