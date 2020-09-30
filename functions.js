@@ -72,7 +72,7 @@ buttonCalcular.onclick = function principal(){
             cont++
             for(var i = cont; i <= dados.length; i++){
                 if(parseFloat(dados[i]) <  intervalo * cont + parseFloat(dados[0])  ){
-                    listaQnt[i - 1] = listaQnt[i - 1] + 1
+                    listaQnt[i - 1] = listaQnt[i - 1] + listaQnt[i]
                     dados.splice(i, 1)
                     listaQnt.splice(i, 1)
                     i = i - 1
