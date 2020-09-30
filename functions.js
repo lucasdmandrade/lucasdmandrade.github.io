@@ -9,18 +9,18 @@ buttonCalcular.onclick = function principal(){
     let tipo2 // recebe o valor dos radios 2
 
     // verifica qual radio da variavel 1 foi selecionado
-    var tipo1 = document.getElementsByName("tipoVariavel"); // Qualitativa ou quantitativa
-    for (var i = 0; i < tipo1.length; i++) {
-        if (tipo1[i].checked) {
-            tipo1 = tipo1[i].value
+    var Tipo1 = document.getElementsByName("tipoVariavel"); // Qualitativa ou quantitativa
+    for (var i = 0; i < Tipo1.length; i++) {
+        if (Tipo1[i].checked) {
+            Tipo1 = Tipo1[i].value
         }
     }
 
     // verifica qual radio da variavel 2 foi selecionado
-    var tipo2 = document.getElementsByName("tipoVariavel2"); // Amostra ou população
-    for (var i = 0; i < tipo2.length; i++) {
-        if (tipo2[i].checked) {
-            tipo2 = tipo2[i].value
+    var Tipo2 = document.getElementsByName("tipoVariavel2"); // Amostra ou população
+    for (var i = 0; i < Tipo2.length; i++) {
+        if (Tipo2[i].checked) {
+            Tipo2 = Tipo2[i].value
         }
     }
 
