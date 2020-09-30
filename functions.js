@@ -27,11 +27,13 @@ buttonCalcular.onclick = function principal(){
     //conta os elementos iguais no vetor e exclui os repetidos
     for (var i = 0; i < dados.length; i++){
         listaQnt[i] = 1
+    }
+    for (var i = 0; i < dados.length; i++){
         for (var j = i + 1; j < dados.length; j++){
             if (dados[i] == dados[j]){
-                listaQnt[i] = listaQnt[i] + 1
+                listaQnt[i] += 1
                 dados.splice(j, 1)
-                dados.splice(j, 1)
+                listaQnt.splice(j, 1)
             }
         }
     }
