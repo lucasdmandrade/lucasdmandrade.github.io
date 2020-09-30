@@ -3,6 +3,7 @@ let buttonCalcular = document.querySelector("#btnC") // botão "Calcular" como v
 
 buttonCalcular.onclick = function principal(){
     let nome = document.querySelector("#nome").value
+    let intervalo = document.querySelector("#intervalo").value
     let dados = document.querySelector("#dados").value.split(" ") // valores das variaveis tranformados em lista
     let listaQnt = []
     let tipo1 // recebe o valor dos radios 1
@@ -39,19 +40,19 @@ buttonCalcular.onclick = function principal(){
         }
     }
 
-    console.log(tipo1, " ", tipo2)
+    console.log(tipo1, " ", tipo2, " ", intervalo)
     console.log(dados)
     console.log(listaQnt)
 
     //se for tipo quantitativa precisa colocar em ordenar os dados
-    if(tipo1 == "continua", "discreta"){
+    if(tipo1 == "continua" || tipo1 == "discreta"){
         let trocas 
         do {
             trocas = 0
     
             // Percurso do vetor do início até a PENÚLTIMA (length - 2)
             for(let i = 0; i <= dados.length - 2; i++) {
-                if(dados[i] > dados[i + 1]) {
+                if(parseInt(dados[i]) > parseFloat(dados[i + 1])) {
                     // Fazer a troca entre os elementos usando DESESTRUTURAÇÃO (destructuring)
                     [dados[i], dados[i + 1]] = [dados[i + 1], dados[i]]
                     trocas++
@@ -61,6 +62,22 @@ buttonCalcular.onclick = function principal(){
         } while(trocas > 0)
     }
     console.log(dados)
+
+    //se for quantitativa ordinal precisa juntar em "intervalos"
+    if(tipo1 == "continua"){
+        for(var i = 0; i < dados.length; i++){
+            for(var j = i + 1; j <= dados.length; j++){
+                for(var i_intervalo = 0; i_intervalo < intervalo; i_intervalo++){
+                    if(parseFloat(dados[i]) + parseFloat(i_intervalo) == parseFloat(dados[j])){
+                        listaQnt[i] = listaQnt[i] + 1
+                        listaQnt.splice(j, 1)
+                        dados.splice(j, 1)
+                        j = j - 1
+                    }
+                }
+            }
+        }
+    }
 
  // TABELA 
 
@@ -98,4 +115,3 @@ buttonCalcular.onclick = function principal(){
 
     tabela.innerHTML = tabela_str.join("\n");
     }
-
