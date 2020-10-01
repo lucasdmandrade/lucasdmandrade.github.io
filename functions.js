@@ -3,7 +3,7 @@ let buttonCalcular = document.querySelector("#btnC") // botão "Calcular" como v
 
 buttonCalcular.onclick = function principal(){
     let nome = document.querySelector("#nome").value
-    let intervalo 
+    let intervalo = 0
     let dados = document.querySelector("#dados").value.split(";") // valores das variaveis tranformados em lista
     let listaQnt = []
     let tipo1 // recebe o valor dos radios 1
@@ -64,18 +64,25 @@ buttonCalcular.onclick = function principal(){
     }
     console.log(dados)
 
+
+    let flecha
     //se for quantitativa ordinal precisa juntar em "intervalos"
     if(tipo1 == "continua"){
-        intervalo = dados[dados.length] - dados[0]
+
+        flecha = "|-- "
+
+
+        intervalo = parseFloat(dados[dados.length - 1]) - parseFloat(dados[0])
+        console.log(intervalo)
         let k = Math.sqrt(dados.length)
-        intervalo = intervalo / k
+        intervalo = parseFloat(intervalo) / k
         let cont = 0
         let cont2 
         do{
             cont2 = 0
             cont++
             for(var i = cont; i <= dados.length; i++){
-                if(parseFloat(dados[i]) <  intervalo * cont + parseFloat(dados[0])  ){
+                if(parseFloat(dados[i]) <  parseFloat(intervalo) * cont + parseFloat(dados[0])  ){
                     listaQnt[i - 1] = listaQnt[i - 1] + listaQnt[i]
                     dados.splice(i, 1)
                     listaQnt.splice(i, 1)
@@ -84,9 +91,10 @@ buttonCalcular.onclick = function principal(){
                 }
             }
             
-            console.log(cont, cont2, i)
+            console.log(cont, cont2, i, k)
         }while(cont2 > 0)
     }
+    console.log(intervalo)
 
     //CALCULOS TABELA
     //quantidade total inserida
@@ -131,7 +139,7 @@ console.log(fAcumulada)
 
   for(var i = 0; i < dados.length; i++){
     tabela_str.push('<tr>',
-    '<td>' + dados[i] + '</td>',
+    '<td>' + dados[i] + "  " + flecha + (parseFloat(dados[i]) + intervalo).toFixed(3) + '</td>',
     '<td>' + listaQnt[i] + '</td>',
     '<td>' + fRelativa[i] + '</td>',
     '<td>' + ' %' + (fRelativa[i] * 100).toFixed(3) + '</td>',
