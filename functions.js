@@ -96,11 +96,16 @@ buttonCalcular.onclick = function principal(){
     for(var i = 0; i < listaQnt.length; i++){
         fRelativa[i] = (listaQnt[i] / qnt_total).toFixed(3)
     }
-
-
 console.log(qnt_total)
 console.log(fRelativa)
-    
+
+    //frequencia acumulada
+    fAcumulada = []
+    fAcumulada[0] = fRelativa[0]
+    for(var i = 1; i < listaQnt.length; i++){
+        fAcumulada[i] = (parseFloat(fAcumulada[i - 1]) + parseFloat(fRelativa[i])).toFixed(3) 
+    }
+console.log(fAcumulada)    
 
  // TABELA 
 
@@ -129,6 +134,8 @@ console.log(fRelativa)
     '<td>' + listaQnt[i] + '</td>',
     '<td>' + fRelativa[i] + '</td>',
     '<td>' + ' %' + fRelativa[i] * 100 + '</td>',
+    '<td>' + fAcumulada[i] + '</td>',
+    '<td>' + ' %' + (fAcumulada[i] * 100).toFixed(3) + '</td>',
     '</tr>'
 ])
   }
@@ -140,4 +147,3 @@ console.log(fRelativa)
 
     tabela.innerHTML = tabela_str.join("\n");
     }
-    
