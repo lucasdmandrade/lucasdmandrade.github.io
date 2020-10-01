@@ -8,6 +8,7 @@ buttonCalcular.onclick = function principal(){
     let listaQnt = []
     let tipo1 // recebe o valor dos radios 1
     let tipo2 // recebe o valor dos radios 2
+    let qnt_total=0 
 
     // verifica qual radio da variavel 1 foi selecionado
     var Tipo1 = document.getElementsByName("tipoVariavel"); // Qualitativa ou quantitativa
@@ -83,6 +84,24 @@ buttonCalcular.onclick = function principal(){
             console.log(cont, cont2, i)
         }while(cont2 > 0)
     }
+
+    //CALCULOS TABELA
+    //quantidade total inserida
+    for(var i = 0; i < listaQnt.length; i++){
+        qnt_total += listaQnt[i]
+    }
+
+    //frequencia relativa
+    let fRelativa = []
+    for(var i = 0; i < listaQnt.length; i++){
+        fRelativa[i] = (listaQnt[i] / qnt_total).toFixed(3)
+    }
+
+
+console.log(qnt_total)
+console.log(fRelativa)
+    
+
  // TABELA 
 
     let tabela = document.getElementById("tabela")
@@ -94,7 +113,7 @@ buttonCalcular.onclick = function principal(){
 
     tabela_str.push(['<th>' + nome + '</th>',
   '<th>Quantidade</th>',
-  '<th>frequencia simples</th>',
+  '<th>frequencia Relativa </th>',
   '<th>freuqencia em porcentagem</th>',
   '<th>acumulo</th>',
   '<th>acumulo em porcentagem</th>'
@@ -108,6 +127,8 @@ buttonCalcular.onclick = function principal(){
     tabela_str.push(['<tr>',
     '<td>' + dados[i] + '</td>',
     '<td>' + listaQnt[i] + '</td>',
+    '<td>' + fRelativa[i] + '</td>',
+    '<td>' + ' %' + fRelativa[i] * 100 + '</td>',
     '</tr>'
 ])
   }
@@ -119,4 +140,4 @@ buttonCalcular.onclick = function principal(){
 
     tabela.innerHTML = tabela_str.join("\n");
     }
-
+    
