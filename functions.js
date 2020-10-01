@@ -9,6 +9,10 @@ buttonCalcular.onclick = function principal(){
     let tipo1 // recebe o valor dos radios 1
     let tipo2 // recebe o valor dos radios 2
     let qnt_total=0 
+    let moda = 0
+    let media = 0 
+    let separatriz = 0 
+    let mediana = 0
 
     // verifica qual radio da variavel 1 foi selecionado
     var Tipo1 = document.getElementsByName("tipoVariavel"); // Qualitativa ou quantitativa
@@ -65,17 +69,17 @@ buttonCalcular.onclick = function principal(){
     console.log(dados)
 
 
-    let flecha
+    let flecha = ""
     //se for quantitativa ordinal precisa juntar em "intervalos"
     if(tipo1 == "continua"){
 
         flecha = "|-- "
 
 
-        intervalo = parseFloat(dados[dados.length - 1]) - parseFloat(dados[0])
+        intervalo = parseFloat(dados[dados.length - 1]) - parseFloat(dados[0]) + 1
         console.log(intervalo)
-        let k = Math.sqrt(dados.length)
-        intervalo = parseFloat(intervalo) / k
+        let k = Math.round(Math.sqrt(dados.length))
+        intervalo = Math.round(parseFloat(intervalo) / k)
         let cont = 0
         let cont2 
         do{
@@ -139,7 +143,7 @@ console.log(fAcumulada)
 
   for(var i = 0; i < dados.length; i++){
     tabela_str.push('<tr>',
-    '<td>' + dados[i] + "  " + flecha + (parseFloat(dados[i]) + intervalo).toFixed(3) + '</td>',
+    '<td>' + dados[i] + "  " + flecha + (parseFloat(dados[0]) + intervalo * (i + 1)).toFixed(3) + '</td>',
     '<td>' + listaQnt[i] + '</td>',
     '<td>' + fRelativa[i] + '</td>',
     '<td>' + ' %' + (fRelativa[i] * 100).toFixed(3) + '</td>',
