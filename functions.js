@@ -32,7 +32,7 @@ buttonCalcular.onclick = function principal(){
     }
     for (var i = 0; i < dados.length; i++){
         for (var j = i + 1; j <= dados.length; j++){
-            if (dados[i] == dados[j]){
+            if (parseFloat(dados[i]) == parseFloat(dados[j])){
                 listaQnt[i] += 1
                 dados.splice(j, 1)
                 listaQnt.splice(j, 1)
