@@ -4,7 +4,7 @@ let buttonCalcular = document.querySelector("#btnC") // botão "Calcular" como v
 buttonCalcular.onclick = function principal(){
     let nome = document.querySelector("#nome").value
     let intervalo 
-    let dados = document.querySelector("#dados").value.split("; ") // valores das variaveis tranformados em lista
+    let dados = document.querySelector("#dados").value.split(";") // valores das variaveis tranformados em lista
     let listaQnt = []
     let tipo1 // recebe o valor dos radios 1
     let tipo2 // recebe o valor dos radios 2
