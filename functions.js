@@ -3,8 +3,8 @@ let buttonCalcular = document.querySelector("#btnC") // botão "Calcular" como v
 
 buttonCalcular.onclick = function principal(){
     let nome = document.querySelector("#nome").value
-    let intervalo = document.querySelector("#intervalo").value
-    let dados = document.querySelector("#dados").value.split(" ") // valores das variaveis tranformados em lista
+    let intervalo 
+    let dados = document.querySelector("#dados").value.split("; ") // valores das variaveis tranformados em lista
     let listaQnt = []
     let tipo1 // recebe o valor dos radios 1
     let tipo2 // recebe o valor dos radios 2
@@ -66,6 +66,9 @@ buttonCalcular.onclick = function principal(){
 
     //se for quantitativa ordinal precisa juntar em "intervalos"
     if(tipo1 == "continua"){
+        intervalo = dados[dados.length] - dados[0]
+        let k = Math.sqrt(dados.length)
+        intervalo = intervalo / k
         let cont = 0
         let cont2 
         do{
@@ -114,36 +117,33 @@ console.log(fAcumulada)
     let tabela_str = [
         '<table>',
   '<thead>',
-  '<tr>']
-
-    tabela_str.push(['<th>' + nome + '</th>',
+  '<tr>',
+    '<th>' + nome + '</th>',
   '<th>Quantidade</th>',
   '<th>frequencia Relativa </th>',
   '<th>freuqencia em porcentagem</th>',
   '<th>acumulo</th>',
-  '<th>acumulo em porcentagem</th>'
-])
-
-  tabela_str.push(['</tr>',
+  '<th>acumulo em porcentagem</th>',
+  '</tr>',
   '</thead>',
-  '<tbody>'])
+  '<tbody>']
+
 
   for(var i = 0; i < dados.length; i++){
-    tabela_str.push(['<tr>',
+    tabela_str.push('<tr>',
     '<td>' + dados[i] + '</td>',
     '<td>' + listaQnt[i] + '</td>',
     '<td>' + fRelativa[i] + '</td>',
-    '<td>' + ' %' + fRelativa[i] * 100 + '</td>',
+    '<td>' + ' %' + (fRelativa[i] * 100).toFixed(3) + '</td>',
     '<td>' + fAcumulada[i] + '</td>',
     '<td>' + ' %' + (fAcumulada[i] * 100).toFixed(3) + '</td>',
     '</tr>'
-])
+)
   }
   
-  tabela_str.push([
-  '</tbody>',
-  '</table>'
-    ])
+  tabela_str[tabela_str.length ] = '</tbody>';
+  tabela_str[tabela_str.length ] = '</table>';
 
     tabela.innerHTML = tabela_str.join("\n");
+    console.log(tabela_str)
     }
