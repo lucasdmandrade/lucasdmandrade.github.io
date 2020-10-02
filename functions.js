@@ -10,9 +10,14 @@ buttonCalcular.onclick = function principal(){
     let tipo2 // recebe o valor dos radios 2
     let qnt_total=0 
     let moda = 0
-    let media = 0 
+    let moda_posicao = 0
+    let media = 0.0
     let separatriz = 0 
     let mediana = 0
+    let mediana_posicao = 0
+    let mediana_posicao2 = 0
+    let mediana_valor = 0
+    let mediana2 = 0
 
     // verifica qual radio da variavel 1 foi selecionado
     var Tipo1 = document.getElementsByName("tipoVariavel"); // Qualitativa ou quantitativa
@@ -36,7 +41,7 @@ buttonCalcular.onclick = function principal(){
     }
     for (var i = 0; i < dados.length; i++){
         for (var j = i + 1; j <= dados.length; j++){
-            if (parseFloat(dados[i]) == parseFloat(dados[j])){
+            if (dados[i] == dados[j]){
                 listaQnt[i] += 1
                 dados.splice(j, 1)
                 listaQnt.splice(j, 1)
@@ -116,9 +121,9 @@ console.log(fRelativa)
 
     //frequencia acumulada
     fAcumulada = []
-    fAcumulada[0] = fRelativa[0]
+    fAcumulada[0] = listaQnt[0]
     for(var i = 1; i < listaQnt.length; i++){
-        fAcumulada[i] = (parseFloat(fAcumulada[i - 1]) + parseFloat(fRelativa[i])).toFixed(3) 
+        fAcumulada[i] = (parseFloat(fAcumulada[i - 1]) + parseFloat(listaQnt[i])).toFixed(3) 
     }
 console.log(fAcumulada)    
 
@@ -141,21 +146,81 @@ console.log(fAcumulada)
   '<tbody>']
 
 
-  for(var i = 0; i < dados.length; i++){
-    tabela_str.push('<tr>',
-    '<td>' + dados[i] + "  " + flecha + (parseFloat(dados[0]) + intervalo * (i + 1)).toFixed(3) + '</td>',
-    '<td>' + listaQnt[i] + '</td>',
-    '<td>' + fRelativa[i] + '</td>',
-    '<td>' + ' %' + (fRelativa[i] * 100).toFixed(3) + '</td>',
-    '<td>' + fAcumulada[i] + '</td>',
-    '<td>' + ' %' + (fAcumulada[i] * 100).toFixed(3) + '</td>',
-    '</tr>'
-)
+  if(flecha == "|-- "){
+    for(var i = 0; i < dados.length; i++){
+        tabela_str.push('<tr>',
+        '<td>' + dados[i] + "  " + flecha + (parseFloat(dados[0]) + intervalo * (i + 1)).toFixed(3) + '</td>',
+        '<td>' + listaQnt[i] + '</td>',
+        '<td>' + fRelativa[i] + '</td>',
+        '<td>' + ' %' + (fRelativa[i] * 100).toFixed(3) + '</td>',
+        '<td>' + fAcumulada[i] + '</td>',
+        '<td>' + ' %' + (100 / qnt_total * fAcumulada[i]).toFixed(3) + '</td>',
+        '</tr>')
+      }
   }
+  else{
+    for(var i = 0; i < dados.length; i++){
+        tabela_str.push('<tr>',
+        '<td>' + dados[i] + '</td>',
+        '<td>' + listaQnt[i] + '</td>',
+        '<td>' + fRelativa[i] + '</td>',
+        '<td>' + ' %' + (fRelativa[i] * 100).toFixed(3) + '</td>',
+        '<td>' + fAcumulada[i] + '</td>',
+        '<td>' + ' %' + (100 / qnt_total * fAcumulada[i]).toFixed(3) + '</td>',
+        '</tr>')
+      }
+  }
+
+  
   
   tabela_str[tabela_str.length ] = '</tbody>';
   tabela_str[tabela_str.length ] = '</table>';
 
     tabela.innerHTML = tabela_str.join("\n");
     console.log(tabela_str)
+
+    //Moda
+    moda = listaQnt[0]
+    for(var i = 0; i < listaQnt.length; i++){
+        if(listaQnt[i] > moda){
+            moda = listaQnt[i]
+        }
     }
+    for(var i = 0; i < listaQnt.length; i++){
+        if(listaQnt[i] == moda){
+            moda_posicao.push(dados[i])
+        }
+    }console.log(moda, moda_posicao)
+
+    //MEDIA
+    for(var i = 0; i < dados.length; i++){
+        media = media + parseFloat(dados[i] * listaQnt[i])
+    }
+    media = media / qnt_total
+    console.log(media)
+
+    //MEDIANA
+    mediana_valor = fAcumulada[fAcumulada.length - 1] / 2
+    if(fAcumulada[fAcumulada.length - 1] % 2 == 0){
+        mediana = mediana_valor 
+        mediana2 = mediana + 1
+    }else{
+        mediana = Math.round(mediana_valor)
+    }console.log(mediana, mediana2, mediana_valor)
+
+    if(mediana2 == 0){
+        for(var i = 0; i < dados.length; i++){
+            if(mediana < fAcumulada[i]){
+                mediana_posicao = i - 1
+            }
+        }
+    }else{
+        for(var i = 0; i < dados.length; i++){
+            if(mediana < fAcumulada[i]){
+                mediana_posicao = i - 1
+            }if(mediana < fAcumulada[i]){
+                mediana_posicao2 = i - 1
+            }
+        }
+    }console.log(mediana_posicao, mediana_posicao2)
+}
