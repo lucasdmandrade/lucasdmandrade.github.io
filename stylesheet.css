@@ -1,5 +1,58 @@
+html{
+    font-size: 15px;
+    text-align: left;
+    font-family: 'Nunito', sans-serif;
+    background-color: #E3A362;
+    background-blend-mode: #DD8730;
+    }
+
+body{
+    width: 600px;
+    margin: 0 auto;
+    background-color: #E3A362;
+    padding: 0 20px 20px 20px;
+    border-block-end-color: darkred;
+}
+
 h1{
     color:darkred;
+    margin: 0;
+    text-align: center;
     font-size: 40px;
-    text-align: center
+    text-shadow: 1px 1px 1px black;
+    }
+
+h2{
+    color: darkred;
+    margin: 0;
+    font-size: 20px;
+    text-decoration: underline;
+   
 }
+
+input#dados{
+
+position: static;
+margin-left: 6px;
+
+}
+
+input#nome{
+
+position: static;
+margin-left: 2px;
+
+}
+
+input#type{
+
+    vertical-align: top;
+}
+
+table{
+    caption-side: top;
+    table-layout: auto;
+    border-collapse: separate;
+    border-spacing: 10px 5px;
+}
+

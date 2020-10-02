@@ -2,23 +2,28 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <link href="stylesheet.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
     <title>Projeto Estátistica</title>
+  
 </head>
 <body>
-    <h1>Estátistica Descritiva</h1>
+    <h1>Estatística Descritiva</h1>
 
 <!--Dados da Variável-->
-
+    <p>
     <h2>Dados</h2>
+    <p>
     <label for="nome">Nome da variável:</label>
     <input type="text" id="nome" name="nome">
     <br><br>
     <label for="dados">Digite os dados:</label>
     <input type="text" id="dados" name="dados">
-
+    </p></p>
   <!--Tipo de Variável-->  
 
     <h2>Tipo de variavel</h2>
+    <p>
     <input type="radio" id="nominal" name="tipoVariavel" value="nominal">
     <label for="nominal">Variavel Qualitativa Nominal</label>
     <br>
@@ -32,6 +37,7 @@
     <label for="continua">Variavel Quantitatia Continua</label>
     <br>
     <br><br>
+    </p>
 
 <!--Amostra ou População-->
 
@@ -50,7 +56,6 @@
 </p>
 
     <div>
-        <h1>TABELA</h1>
         <table id="tabela"></table>
     </div>
 
