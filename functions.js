@@ -18,6 +18,7 @@ buttonCalcular.onclick = function principal(){
     let mediana_posicao2 = 0
     let mediana_valor = 0
     let mediana2 = 0
+    let mediana_continua = 0
 
     // verifica qual radio da variavel 1 foi selecionado
     var Tipo1 = document.getElementsByName("tipoVariavel"); // Qualitativa ou quantitativa
@@ -193,11 +194,20 @@ console.log(fAcumulada)
     }console.log(moda, moda_posicao)
 
     //MEDIA
+    if(tipo1 == "continua"){
+        for(var i = 0; i < dados.length; i++){
+            media = media + parseFloat((dados[i] + intervalo / 2) * listaQnt[i])
+        }
+        media = media / qnt_total
+        console.log(media)
+    }else{
+        
     for(var i = 0; i < dados.length; i++){
         media = media + parseFloat(dados[i] * listaQnt[i])
     }
     media = media / qnt_total
     console.log(media)
+    }
 
     //MEDIANA
     mediana_valor = fAcumulada[fAcumulada.length - 1] / 2
@@ -210,17 +220,32 @@ console.log(fAcumulada)
 
     if(mediana2 == 0){
         for(var i = 0; i < dados.length; i++){
-            if(mediana < fAcumulada[i]){
-                mediana_posicao = i - 1
+            if(mediana <= fAcumulada[i] && mediana > fAcumulada[i - 1]){
+                mediana_posicao = i 
             }
         }
     }else{
-        for(var i = 0; i < dados.length; i++){
-            if(mediana < fAcumulada[i]){
-                mediana_posicao = i - 1
-            }if(mediana < fAcumulada[i]){
-                mediana_posicao2 = i - 1
+        for(var i = 0; i < dados.length; i++){console.log(i)
+            if(mediana <= fAcumulada[i] && mediana > fAcumulada[i - 1]){
+                mediana_posicao = i 
+            }if(mediana <= fAcumulada[i] && mediana > fAcumulada[i - 1]){
+                mediana_posicao2 = i 
+                console.log(i, fAcumulada[i], mediana)
             }
         }
     }console.log(mediana_posicao, mediana_posicao2)
+
+    if(tipo1 == "continua"){
+        mediana_continua = ((mediana - fAcumulada[mediana_posicao - 1]) / listaQnt[mediana_posicao] * intervalo) + parseFloat(dados[mediana_posicao])
+    }
+console.log(mediana_continua)
+
+//valores FINAIS para amostragem
+//mediana(continua) = mediana_continua
+//mediana(com todas as outras variaveis) = dados[mediana_posicao]
+
+//media = media
+
+//moda = dados[moda_posicao]
+//moda(continua) = dados[moda_posicao] + (intervalo / 2)
 }
