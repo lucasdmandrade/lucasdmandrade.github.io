@@ -10,7 +10,7 @@ buttonCalcular.onclick = function principal(){
     let tipo2 // recebe o valor dos radios 2
     let qnt_total=0 
     let moda = 0
-    let moda_posicao = 0
+    let moda_posicao = []
     let media = 0.0
     let separatriz = 0 
     let mediana = 0
