@@ -192,6 +192,8 @@ console.log(fAcumulada)
             moda_posicao.push(dados[i])
         }
     }console.log(moda, moda_posicao)
+     document.getElementById("moda").innerHTML = dados[moda_posicao]
+     document.getElementById("moda").innerHTML = dados[moda_posicao] + (intervalo / 2)
 
     //MEDIA
     if(tipo1 == "continua"){
@@ -207,7 +209,7 @@ console.log(fAcumulada)
     }
     media = media / qnt_total
     console.log(media)
-    }
+    } document.getElementById("media").innerHTML = media
 
     //MEDIANA
     mediana_valor = fAcumulada[fAcumulada.length - 1] / 2
@@ -217,6 +219,7 @@ console.log(fAcumulada)
     }else{
         mediana = Math.round(mediana_valor)
     }console.log(mediana, mediana2, mediana_valor)
+   
 
     if(mediana2 == 0){
         for(var i = 0; i < dados.length; i++){
@@ -234,18 +237,28 @@ console.log(fAcumulada)
             }
         }
     }console.log(mediana_posicao, mediana_posicao2)
+     document.getElementById("mediana").innerHTML = dados[mediana_posicao]
+
 
     if(tipo1 == "continua"){
         mediana_continua = ((mediana - fAcumulada[mediana_posicao - 1]) / listaQnt[mediana_posicao] * intervalo) + parseFloat(dados[mediana_posicao])
     }
 console.log(mediana_continua)
+document.getElementById("medcont").innerHTML = mediana_continua
+
+
 
 //valores FINAIS para amostragem
+
+
 //mediana(continua) = mediana_continua
+
+
 //mediana(com todas as outras variaveis) = dados[mediana_posicao]
 
 //media = media
 
 //moda = dados[moda_posicao]
+
 //moda(continua) = dados[moda_posicao] + (intervalo / 2)
 }
