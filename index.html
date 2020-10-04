@@ -2,36 +2,42 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Projeto Estátistica</title>
+    <title>Projeto Estatística</title>
+    <link href="stylesheet.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Estátistica Descritiva</h1>
+    <h1>Estatística Descritiva</h1>
+  
 
 <!--Dados da Variável-->
-
+    <p>
     <h2>Dados</h2>
+    <p>
     <label for="nome">Nome da variável:</label>
     <input type="text" id="nome" name="nome">
     <br><br>
     <label for="dados">Digite os dados:</label>
     <input type="text" id="dados" name="dados">
+    </p></p>
 
   <!--Tipo de Variável-->  
 
-    <h2>Tipo de variavel</h2>
+    <h2>Tipo de variável</h2>
+    <p>
     <input type="radio" id="nominal" name="tipoVariavel" value="nominal">
-    <label for="nominal">Variavel Qualitativa Nominal</label>
+    <label for="nominal">Variável Qualitativa Nominal</label>
     <br>
     <input type="radio" id="ordinal" name="tipoVariavel" value="ordinal">
-    <label for="ordinal">Variavel Qualitativa Ordinal</label>
+    <label for="ordinal">Variável Qualitativa Ordinal</label>
     <br>
     <input type="radio" id="discreta" name="tipoVariavel" value="discreta">
-    <label for="discreta">Variavel Quantitativa Discreta</label>
+    <label for="discreta">Variável Quantitativa Discreta</label>
     <br>
     <input type="radio" id="continua" name="tipoVariavel" value="continua">
-    <label for="continua">Variavel Quantitatia Continua</label>
+    <label for="continua">Variável Quantitativa Continua</label>
     <br>
     <br><br>
+    </p>
 
 <!--Amostra ou População-->
 
@@ -40,18 +46,34 @@
     <input type="radio" id="populacao" name="tipoVariavel2" value="populacao">
     <label for="populacao">População</label>
 
-<!--Media-->
-<p>
-<output id="media">Média</output> 
-</p>
 
 <p>
-<button id="btnC">Calcular</button>
+<button class= "bt" id="btnC">Calcular</button>
 </p>
 
     <div>
-        <h1>TABELA</h1>
         <table id="tabela"></table>
+
+        <thead>
+
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        
+        </thead>
+
+        <tbody>
+        <tb></tb>
+        <tb></tb>
+        <tb></tb>
+        <tb></tb>
+        <tb></tb>
+        <tb></tb>
+        </tbody>
     </div>
 
     <script src="functions.js"></script>

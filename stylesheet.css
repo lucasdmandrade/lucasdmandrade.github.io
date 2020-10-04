@@ -1,58 +1,83 @@
 html{
     font-size: 15px;
-    text-align: left;
     font-family: 'Nunito', sans-serif;
-    background-color: #E3A362;
-    background-blend-mode: #DD8730;
     }
+
+h1{ 
+
+    margin-left: 150px;
+    padding-bottom: 10px;
+    color:rgb(184, 55, 55);
+    font-size: 30px;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(24, 23, 23, 0.829);
+
+    }
+
 
 body{
-    width: 600px;
-    margin: 0 auto;
-    background-color: #E3A362;
-    padding: 0 20px 20px 20px;
-    border-block-end-color: darkred;
+    width: 500px;
+    margin: 10px;
+    padding: 30 30 30 30;
+    background-image: radial-gradient(
+         rgb(252, 220, 179),
+         rgb(252, 211, 159),
+         rgb(250, 196, 126)
+    );
 }
-
-h1{
-    color:darkred;
-    margin: 0;
-    text-align: center;
-    font-size: 40px;
-    text-shadow: 1px 1px 1px black;
-    }
 
 h2{
-    color: darkred;
-    margin: 0;
+    text-align: left;
+    color: rgb(184, 55, 55);
+    line-height: 30px;
     font-size: 20px;
     text-decoration: underline;
-   
 }
 
-input#dados{
+input[type=text]{
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px rgba(24, 23, 23, 0.829);
+}
 
-position: static;
-margin-left: 6px;
+.bt{
+    border: 3px black;
+    border-radius: 3px;
+    font-size: 15px;
+    display: inline-block;
+    padding: 8px 8px;
+    cursor: pointer;
+
 
 }
 
-input#nome{
 
-position: static;
-margin-left: 2px;
+#tabela{
+    font: 100% sans-serif;
+    border-collapse: collapse;
+    border: .2em solid black;
+    margin-bottom: .5em;
+}
+
+#tabela th {
+  text-align: center;
+  padding-right: .5em;
+  font-weight: bold;
+  padding-left: .5em;
+  background-color: rgb(245, 149, 126);
+  }
+
+#tabela tbody{
+    background-color: rgb(226, 145, 125);
+    border-collapse: collapse;
+    border: .2em solid black;
+    text-align: right;
+}
+
+#tabela td{
+     border-collapse: collapse;
+     border: .1em transparent black;
 
 }
 
-input#type{
-
-    vertical-align: top;
-}
-
-table{
-    caption-side: top;
-    table-layout: auto;
-    border-collapse: separate;
-    border-spacing: 10px 5px;
-}
-
+#tabela th:after {
+  content: ":";
