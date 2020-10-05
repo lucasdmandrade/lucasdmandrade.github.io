@@ -192,8 +192,7 @@ console.log(fAcumulada)
             moda_posicao.push(dados[i])
         }
     }console.log(moda, moda_posicao)
-     document.getElementById("moda").innerHTML = dados[moda_posicao]
-     document.getElementById("moda").innerHTML = dados[moda_posicao] + (intervalo / 2)
+     document.getElementById("moda").innerHTML = moda
 
     //MEDIA
     if(tipo1 == "continua"){
