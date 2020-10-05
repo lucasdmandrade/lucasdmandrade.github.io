@@ -192,7 +192,9 @@ console.log(fAcumulada)
             moda_posicao.push(dados[i])
         }
     }console.log(moda, moda_posicao)
-     document.getElementById("moda").innerHTML = moda
+    for(var i = 0; i < moda_posicao.length; i++){
+        document.getElementById("moda").innerHTML = dados[moda_posicao[i]]
+    }
 
     //MEDIA
     if(tipo1 == "continua"){
